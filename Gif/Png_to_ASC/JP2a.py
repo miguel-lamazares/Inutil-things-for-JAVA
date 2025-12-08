@@ -1,9 +1,12 @@
 import os
 import subprocess
+import sys
 
-folder = "/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Gif to frames/Frame in png"
+
+folder = "/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Gif to frames/Frame in png/"
 
 png_files = [f for f in sorted(os.listdir(folder)) if f.endswith(".png")]
+max = len(png_files)
 
 asc_frames = []
 
@@ -15,7 +18,7 @@ for filename in png_files:
 
 
 
-with open("/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Loop/AscFrames/Frames.java", "w", encoding="utf-8") as f:
+with open("../Loop/cave/AscFrames/art.java", "w", encoding="utf-8") as f:
     f.write("package Gif.Loop.cave.AscFrames;\n\npublic class art {\n\n")
     
     for i, frame in enumerate(asc_frames):
@@ -35,7 +38,22 @@ with open("/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Loop/AscFrames
             f.write(f"    public static String frame{i} = \"\"\"\n")
             f.write(frame.replace("\\", "\\\\"))  
             f.write("\"\"\";\n\n")
+
+        
     
     f.write("}\n")
 
-print("Arquivo Frames.java gerado com sucesso!")
+with open("../Loop/cave/AscFrames/aray.java", "w", encoding="utf-8") as f:
+    f.write("package Gif.Loop.cave.AscFrames;\n\npublic class aray {\npublic static String[] frames = {")
+
+    
+    for i in range(max):
+        
+        
+        f.write(f"art.frame{i},\n")
+        if(i == max - 1):
+            f.write(f"art.frame{i}\n")
+ 
+    f.write("};}\n")
+
+print("File aray.java and art.java ware made with sucess!")

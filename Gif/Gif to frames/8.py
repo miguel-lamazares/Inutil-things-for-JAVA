@@ -1,6 +1,26 @@
 from PIL import Image
+import os
+import sys
 
-gif = Image.open("/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Gif to frames/gif.gif")
+
+def print_progress_bar(current, total, bar_length=20):
+    progress = current / total
+    filled_length = int(bar_length * progress)
+    bar = '∎' * filled_length + '.' * (bar_length - filled_length)
+    sys.stdout.write(f'\r[{bar}] {current}/{total}')
+    sys.stdout.flush()
+    if current == total:
+        print()
+
+xz = input("what's the GIF's address?: ")
+
+output_dir = "Frame in png"
+os.makedirs(output_dir, exist_ok=True)
+
+gif = Image.open(xz)
 for i in range(gif.n_frames):
     gif.seek(i)
-    gif.save(f"/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Gif to frames/Frame in png/frame_{i}.png")
+    gif.save(f"{output_dir}/frame_{i}.png")
+    
+    print_progress_bar(i + 1, gif.n_frames)
+
