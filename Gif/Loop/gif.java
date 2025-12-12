@@ -38,6 +38,8 @@ public class gif {
     public static void main(String[] args) {
         String[] frames = aray.frames;
 
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         animatePingPong(frames, 120);
     }
 

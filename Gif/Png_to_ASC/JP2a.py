@@ -6,7 +6,7 @@ import asc
 def print_progress_bar(current, total, bar_length=20):
     progress = current / total
     filled_length = int(bar_length * progress)
-    bar = '#' * filled_length + '.' * (bar_length - filled_length)
+    bar = '∎' * filled_length + '.' * (bar_length - filled_length)
     sys.stdout.write(f'\r[{bar}] {current}/{total}')
     sys.stdout.flush()
     if current == total:
@@ -22,7 +22,7 @@ colors = asc.read_int(3)
 # CONFIG JP2A
 # ---------------------------------------------
 if colors == 1:
-    jp2a_cmd = ["jp2a", "--colors", "--color-depth=24"]
+    jp2a_cmd = ["jp2a", "--invert", "--colors", "--color-depth=24"]
 elif colors == 2:
     jp2a_cmd = ["jp2a"]  # default: B/W
 elif colors == 3:
