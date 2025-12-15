@@ -13,6 +13,7 @@ fi
 
 . "$ROOT/.venv/bin/activate"
 
+
 # -----------------------------
 # Python steps
 # -----------------------------
@@ -26,19 +27,15 @@ PYTHON="$ROOT/.venv/bin/python"
 # -----------------------------
 # C build
 # -----------------------------
-echo "[*] Compiling C renderer"
 gcc "$ROOT/Gif/Render/Render.c" -O3 -o "$ROOT/Gif/Render/Render"
 
 # -----------------------------
 # Java build
 # -----------------------------
-echo "[*] Compiling Java"
-javac "$ROOT/Gif/AscFrames/"*.java
-javac "$ROOT/Gif/Loop/gif.java"
+javac "$ROOT/Gif/Player/gif.java"
 
 # -----------------------------
 # Run animation
 # -----------------------------
-echo "[▶] Running animation"
-java Gif.Loop.gif
+java Gif.Player.gif
 

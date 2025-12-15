@@ -181,43 +181,24 @@ for i, file in enumerate(png_files):
     asc.print_progress_bar(i + 1, total)
 
 # ---------------------------------------------
-# WRITE art.java
+#  CLEANING OLD FRAMES
 # ---------------------------------------------
+out = "/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/AscFrames"
 
-os.makedirs("/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/AscFrames", exist_ok=True)
+asc_files = sorted(f for f in os.listdir(out) if f.endswith(".asc"))
 
-with open("/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/AscFrames/art.java", "w", encoding="utf-8") as f:
-    f.write(
-        "package Gif.AscFrames;\n\n"
-        "public class art {\n\n"
-    )
-
-    for i, frame in enumerate(frames):
-        escaped = (
-            frame
-            .replace("\\", "\\\\")
-            .replace("\"", "\\\"")
-            .replace("\n", "\\n")
-        )
-        f.write(f'    public static String frame{i} = "{escaped}";\n\n')
-
-    f.write("}\n")
+for file in asc_files:
+    os.remove(os.path.join(out, file))
 
 # ---------------------------------------------
-# WRITE aray.java
+# WRITING ASC FRAMES
 # ---------------------------------------------
 
-with open("/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/AscFrames/aray.java", "w", encoding="utf-8") as f:
-    f.write(
-        "package Gif.AscFrames;\n\n"
-        "public class aray {\n"
-        "    public static String[] frames = {\n"
-    )
+os.makedirs(out, exist_ok=True)
 
-    for i in range(total):
-        comma = "," if i < total - 1 else ""
-        f.write(f"        art.frame{i}{comma}\n")
+for i, frame in enumerate(frames):
+    path = os.path.join(out, f"{i:04d}.asc")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(frame)
 
-    f.write("    };\n}\n")
-
-print("\nart.java and aray.java generated successfully ✔")
+print("Finish with sucess, java starting")
