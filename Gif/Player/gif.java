@@ -78,7 +78,7 @@ public class gif {
     public static void main(String[] args) throws Exception {
 
         boolean exitOnEnter = true;
-        long FPS = 5;
+        long FPS = 8;
 
         gif player = new gif();
         player.startRenderer();

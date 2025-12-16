@@ -11,13 +11,13 @@ asc.Clear_all()
 asc.typewrite(asc.Colors.PURPLE + "Configure your jp2a\n", 0.04)
 asc.typewrite(asc.Colors.GREEN + "Border and text\n\n", 0.02)
 
-asc.typewrite(asc.Colors.CYAN + "Border? (0 - yes / 1 - no)\n", 0.02)
-border = "--border" if asc.read_int(2) == 0 else ""
+asc.typewrite(asc.Colors.CYAN + "Border? (1 - yes / 2 - no)\n", 0.02)
+border = "--border" if asc.read_int(1,3) == 1 else ""
 
 asc.Clear_all()
 
-asc.typewrite(asc.Colors.CYAN + "Special characters? (0 - yes / 1 - no)\n", 0.02)
-if asc.read_int(2) == 0:
+asc.typewrite(asc.Colors.CYAN + "Special characters? (1 - yes / 2 - no)\n", 0.02)
+if asc.read_int(1,3) == 1:
     asc.typewrite(asc.Colors.RED + "Characters (min 2):\n")
     char = f"--chars={input()}"
 else:
@@ -25,35 +25,35 @@ else:
 
 asc.Clear_all()
 
-asc.typewrite(asc.Colors.CYAN + "Frame is big? (0 - yes / 1 - no)\n", 0.02)
-fit = "--term-fit" if asc.read_int(2) == 0 else ""
+asc.typewrite(asc.Colors.CYAN + "Frame is big? (1 - yes / 2 - no)\n", 0.02)
+fit = "--term-fit" if asc.read_int(1,3) == 1 else ""
 
 asc.Clear_all()
 
 asc.typewrite(
     asc.Colors.CYAN +
-    "Light characters on dark background? (0 - yes / 1 - no)\n",
+    "Light characters on dark background? (1 - yes / 2 - no)\n",
     0.02
 )
-back = "--background=dark" if asc.read_int(2) == 0 else "--background=light"
+back = "--background=dark" if asc.read_int(1,3) == 1 else "--background=light"
 
 asc.Clear_all()
 
 asc.typewrite(
     asc.Colors.CYAN +
-    "Do you want to clear the terminal before starting? (0 - yes / 1 - no)\n\n",
+    "Do you want to clear the terminal before starting? (1 - yes / 2 - no)\n\n",
     0.02
 )
-clear = "--clear" if asc.read_int(2) == 0 else ""
+clear = "--clear" if asc.read_int(1,3) == 1 else ""
 
 asc.Clear_all()
 
 asc.typewrite(
     asc.Colors.CYAN +
-    "Do you want to center the image? (0 - yes / 1 - no)\n\n",
+    "Do you want to center the image? (1 - yes / 2 - no)\n\n",
     0.02
 )
-center = "--term-center" if asc.read_int(2) == 0 else ""
+center = "--term-center" if asc.read_int(1,3) == 1 else ""
 
 asc.Clear_all()
 
@@ -64,20 +64,20 @@ asc.Clear_all()
 asc.typewrite(asc.Colors.YELLOW + "Proportion\n\n", 0.02)
 asc.typewrite(
     asc.Colors.CYAN +
-    "0. Default\n1. Set width and height\n2. Use terminal zoom\n\n",
+    "1. Default\n2. Set width and height\n3. Use terminal zoom\n\n",
     0.02
 )
 
-choice = asc.read_int(3)
+choice = asc.read_int(1,3)
 proportion = ""
 
-if choice == 1:
+if choice == 2:
     asc.typewrite("Width: ", 0.03)
     w = input()
     asc.typewrite("Height: ", 0.03)
     h = input()
     proportion = f"--size={w}x{h}"
-elif choice == 2:
+elif choice == 3:
     proportion = "--term-zoom"
 
 asc.Clear_all()
@@ -92,7 +92,7 @@ asc.typewrite(
     0.02
 )
 
-mode = asc.read_int(3)
+mode = asc.read_int(1,3)
 
 jp2a_cmd = ["jp2a"]
 
