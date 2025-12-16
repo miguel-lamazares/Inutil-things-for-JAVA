@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 from TerminalLib import asc
+import json
 
 # ---------------------------------------------
 # UI — BASIC OPTIONS
@@ -144,10 +145,25 @@ asc.Clear_all()
 print(asc.Colors.RESET + "")
 
 # ---------------------------------------------
+# Saving configs
+# ---------------------------------------------
+
+FOLDER = "./Gif/Gif_to_asc/Jp2aconfigs"
+
+if not os.path.isdir(FOLDER):
+    print(f"{FOLDER} can't be found")
+    sys.exit(1)
+
+config = {"jp2a_args": asc.clean_args(jp2a_cmd)}
+
+with open("./Gif/Gif_to_asc/Jp2aconfigs/jp2aconfig.json", "w+",encoding="utf-8") as f:
+    json.dump(config,f,indent=4)
+
+# ---------------------------------------------
 # INPUT FOLDER
 # ---------------------------------------------
 
-FOLDER = "/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Gif_to_asc/Frame in png"
+FOLDER = "./Gif/Gif_to_asc/Frame in png"
 
 folder = sys.argv[1] if len(sys.argv) > 1 else FOLDER
 
@@ -183,7 +199,7 @@ for i, file in enumerate(png_files):
 # ---------------------------------------------
 #  CLEANING OLD FRAMES
 # ---------------------------------------------
-out = "/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/AscFrames"
+out = "./Gif/AscFrames"
 
 asc_files = sorted(f for f in os.listdir(out) if f.endswith(".asc"))
 

@@ -7,7 +7,7 @@ from TerminalLib import asc
 print("\033[H\033[2J", flush=True)
 xz = input("what's the GIF's address?: ")
 
-output_dir = "/home/dex/Documentos/GitHub/Inutil-things-for-JAVA/Gif/Gif_to_asc/Frame in png"
+output_dir = "./Gif/Gif_to_asc/Frame in png"
 if os.path.exists(output_dir):
     shutil.rmtree(output_dir)
 os.makedirs(output_dir, exist_ok=True)
