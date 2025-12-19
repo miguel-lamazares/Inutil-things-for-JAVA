@@ -18,3 +18,7 @@ This simple project makes your terminal show gifs as ASC II arts.
 
 #### Docker 🐳
 * it unites everthing that you will need the jdk, python and jp2a.
+
+## How it works
+
+<img src="">
