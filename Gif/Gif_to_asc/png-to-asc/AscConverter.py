@@ -3,6 +3,7 @@ import subprocess
 import sys
 from TerminalLib import asc
 import json
+import shutil
 
 # ---------------------------------------------
 # UI — BASIC OPTIONS
@@ -150,9 +151,9 @@ print(asc.Colors.RESET + "")
 
 FOLDER = "./Gif/Gif_to_asc/Jp2aconfigs"
 
-if not os.path.isdir(FOLDER):
-    print(f"{FOLDER} can't be found")
-    sys.exit(1)
+if os.path.exists(FOLDER):
+    shutil.rmtree(FOLDER)
+os.makedirs(FOLDER, exist_ok=True)
 
 config = {"jp2a_args": asc.clean_args(jp2a_cmd)}
 
@@ -167,9 +168,9 @@ FOLDER = "./Gif/Gif_to_asc/Frame in png"
 
 folder = sys.argv[1] if len(sys.argv) > 1 else FOLDER
 
-if not os.path.isdir(folder):
-    print(f"Folder not found: {folder}")
-    sys.exit(1)
+if os.path.exists(FOLDER):
+    shutil.rmtree(FOLDER)
+os.makedirs(FOLDER, exist_ok=True)
 
 png_files = sorted(f for f in os.listdir(folder) if f.endswith(".png"))
 total = len(png_files)
@@ -201,6 +202,10 @@ for i, file in enumerate(png_files):
 # ---------------------------------------------
 out = "./Gif/AscFrames"
 
+if os.path.exists(out):
+    shutil.rmtree(out)
+os.makedirs(out, exist_ok=True)
+
 asc_files = sorted(f for f in os.listdir(out) if f.endswith(".asc"))
 
 for file in asc_files:
@@ -209,8 +214,6 @@ for file in asc_files:
 # ---------------------------------------------
 # WRITING ASC FRAMES
 # ---------------------------------------------
-
-os.makedirs(out, exist_ok=True)
 
 for i, frame in enumerate(frames):
     path = os.path.join(out, f"{i:04d}.asc")

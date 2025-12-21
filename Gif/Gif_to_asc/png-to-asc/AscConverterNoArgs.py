@@ -3,7 +3,7 @@ import subprocess
 import sys
 from TerminalLib import asc
 import json
-
+import shutil
 
 # ---------------------------------------------
 # Fetching
@@ -57,6 +57,10 @@ for i, file in enumerate(png_files):
 # ---------------------------------------------
 out = "./Gif/AscFrames"
 
+if os.path.exists(out):
+    shutil.rmtree(out)
+os.makedirs(out, exist_ok=True)
+
 asc_files = sorted(f for f in os.listdir(out) if f.endswith(".asc"))
 
 for file in asc_files:
@@ -65,8 +69,6 @@ for file in asc_files:
 # ---------------------------------------------
 # WRITING ASC FRAMES
 # ---------------------------------------------
-
-os.makedirs(out, exist_ok=True)
 
 for i, frame in enumerate(frames):
     path = os.path.join(out, f"{i:04d}.asc")

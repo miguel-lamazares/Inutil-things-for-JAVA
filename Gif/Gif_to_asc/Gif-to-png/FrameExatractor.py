@@ -13,7 +13,12 @@ os.makedirs(output_dir, exist_ok=True)
 
 xz = input("what's the GIF's address?: ")
 
-if xz.startswith("http"):
+if xz.startswith("https:"):
+    folder = "Gif/Gif_to_asc/Gif-to-png/Downloads"
+    asc.download(xz, folder)
+    xz = f"{folder}/gif.gif"
+
+elif xz.startswith("http:"):
     folder = "Gif/Gif_to_asc/Gif-to-png/Downloads"
     asc.download(xz, folder)
     xz = f"{folder}/gif.gif"

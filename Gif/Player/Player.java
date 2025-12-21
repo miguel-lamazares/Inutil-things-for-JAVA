@@ -4,7 +4,7 @@ import java.io.OutputStream;
 import java.nio.file.*;
 import java.util.List;
 
-public class gif {
+public class Player {
 
     private Process renderer;
     private OutputStream rendererIn;
@@ -80,7 +80,7 @@ public class gif {
         boolean exitOnEnter = true;
         long FPS = 8;
 
-        gif player = new gif();
+        Player player = new Player();
         player.startRenderer();
 
         if (exitOnEnter) {
