@@ -28,7 +28,7 @@ The project image for easier use, including JDK, libraries, Python, GCC, and all
 ## How it works
 <div align="center"  justify-content="center">
 <p></p>
-  <img src="./howItWorks.svg">
+  <img src="./Img/howItWorks.svg">
 </div>
 
 ### Talking a little bit about the libs:
@@ -47,12 +47,12 @@ check it in: <a href="https://github.com/miguel-lamazares/TerminalLib">GitHub</a
 
 #### Python's pipeline:
 
-* ```8.py```: Responsible for taking the gifs and transform them in frames, each frame is an image in PNG, all frames going to save in a folder, it always clean the folder before to save something.
+* ```FrameExatractor.py```: Responsible for taking the gifs and transform them in frames, each frame is an image in PNG, all frames going to save in a folder, it always clean the folder before to save something.
 
-* ```JP2a.py or noconfig.py```: both codes are almost the same thing, but after running, the first always save the config that was used and the other use this json for using the last configs. Now the iguals part, they take configs via user or file after it, the JP2A trasforms all frames in ASC arts that are saves in ASC file in a folder, it always clean the folder before to save something.
+* ```AscConverter.py or AscConverterNoArgs.py```: both codes are almost the same thing, but after running, the first always save the config that was used and the other use this json for using the last configs. Now the iguals part, they take configs via user or file after it, the JP2A trasforms all frames in ASC arts that are saves in ASC file in a folder, it always clean the folder before to save something.
 
 #### Java and C, the brain and the heart of the project
-* ```gif.java```: it controls the frames with C, java's use C by subprocess, it constrols with time with FPS, doesn't touch in the terminal, only shere the strings.
+* ```Player.java```: it controls the frames with C, java's use C by subprocess, it constrols with time with FPS, doesn't touch in the terminal, only shere the strings.
 * ```Render.c```: it wait Java's orders, when a string arrives, always it clean the last string and print other.
 ### Installation
 

@@ -20,8 +20,8 @@ fi
 
 PYTHON="$ROOT/.venv/bin/python"
 
-"$PYTHON" "$ROOT/Gif/Gif_to_asc/Gif-to-png/8.py"
-"$PYTHON" "$ROOT/Gif/Gif_to_asc/png-to-asc/JP2a.py"
+"$PYTHON" "$ROOT/Gif/Gif_to_asc/Gif-to-png/FrameExatractor.py"
+"$PYTHON" "$ROOT/Gif/Gif_to_asc/png-to-asc/AscConverter.py"
 
 
 # -----------------------------
@@ -32,10 +32,10 @@ gcc "$ROOT/Gif/Render/Render.c" -O3 -o "$ROOT/Gif/Render/Render"
 # -----------------------------
 # Java build
 # -----------------------------
-javac "$ROOT/Gif/Player/gif.java"
+javac "$ROOT/Gif/Player/Player.java"
 
 # -----------------------------
 # Run animation
 # -----------------------------
-java Gif.Player.gif
+java Gif.Player.Player
 

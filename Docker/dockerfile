@@ -5,6 +5,7 @@ RUN apt update && apt install -y \
     python3 python3-pip \
     openjdk-17-jdk \
     jp2a \
+    pillow \
     bash \
     && rm -rf /var/lib/apt/lists/*
 
